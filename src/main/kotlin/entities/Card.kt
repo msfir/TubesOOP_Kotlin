@@ -1,5 +1,3 @@
 package tubes.oop.entities
 
-abstract class Card(private val number: Int) : Valuable {
-    fun getNumber(): Int = number
-}
+abstract class Card(open val number: Int) : Valuable

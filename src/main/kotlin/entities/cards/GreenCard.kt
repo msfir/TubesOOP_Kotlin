@@ -2,7 +2,7 @@ package tubes.oop.entities.cards
 
 import tubes.oop.entities.Card
 
-class GreenCard(private val number: Int): Card(number) {
+class GreenCard(override val number: Int): Card(number) {
 
     override fun value(): Double = number + 0 * .003
 
