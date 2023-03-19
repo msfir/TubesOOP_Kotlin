@@ -4,6 +4,8 @@ import tubes.oop.entities.Ability
 
 class Quarter : Ability() {
     override fun use() {
-        manager!!.pot /= 4
+        manager.pot /= 4
+
+        used = true
     }
 }

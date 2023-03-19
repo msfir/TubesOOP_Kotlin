@@ -3,11 +3,15 @@ package tubes.oop.entities
 import tubes.oop.GameManager
 
 abstract class Ability {
-    protected var owner: Player? = null
-    protected var manager: GameManager? = null
-    protected var additionalArgs: Map<String, Any> = emptyMap()
+    private var _owner: Player? = null
+    private var _manager: GameManager? = null
+    private var _additionalArgs: Map<String, Any> = emptyMap()
     private var _used = false;
     private var _muted = false;
+
+    protected val owner get() = _owner!!
+    protected val manager get() = _manager!!
+    protected val additionalArgs get() = _additionalArgs!!
 
     var used
         get() = _used
@@ -21,18 +25,21 @@ abstract class Ability {
         }
 
     fun withOwner(player: Player): Ability {
-        owner = player
+        _owner = player
         return this
     }
 
     fun withManager(manager: GameManager): Ability {
-        this.manager = manager
+        this._manager = manager
         return this
     }
 
     fun withAdditionalArgs(args: Map<String, Any>): Ability {
-        additionalArgs = args.toMap()
+        _additionalArgs = args.toMap()
         return this
+    }
+    fun mute() {
+        muted = true
     }
 
     abstract fun use()

@@ -9,6 +9,8 @@ class GameManager {
     private val _players = mutableListOf<Player>()
 
     val players get() = _players.toList()
+    val currentRoundPlayerTurnQueue = mutableListOf<Int>()
+    val nextRoundPlayerTurnQueue = mutableListOf<Int>()
     var pot: Long = 0
     var deck = Deck()
     var table = Table()

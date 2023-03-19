@@ -20,5 +20,7 @@ class Swap : Ability() {
         val card2 = target2.getCard(side2)
         target1.setCard(card2, side1)
         target2.setCard(card1, side2)
+
+        used = true
     }
 }
