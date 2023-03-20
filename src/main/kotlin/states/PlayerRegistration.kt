@@ -14,7 +14,7 @@ class PlayerRegistration : GameState {
             val nickname = readln()
             for (p in manager.players) {
                 if (p.name == nickname) {
-                    println("Player dengan nama ${nickname.ansi(*ANSI_NAME)} sudah terdaftar! Silahkan mengambil nama yang lain")
+                    println("Player dengan nama ${nickname.ansi(*ANSI_NAME)} sudah pernah terdaftar! Silahkan mengambil nama yang lain")
                     continue@outer
                 }
             }
@@ -23,7 +23,7 @@ class PlayerRegistration : GameState {
             manager.players.add(player)
             i++
         }
-        return manager.stateRegistry.getState("setup round")
+        return manager.stateRegistry.getState("game setup")
     }
 
     override fun isEnd(): Boolean = false

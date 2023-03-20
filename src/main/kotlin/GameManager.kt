@@ -11,6 +11,7 @@ class GameManager {
     val deck = Deck()
     val table = Table()
     val stateRegistry = GameStateRegistry()
+    val abilityRegistry = AbilityRegistry()
     var pot = 0L
     var currentRound = 0
     var currentPlayerIndex = 0

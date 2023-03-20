@@ -5,10 +5,10 @@ import tubes.oop.entities.Player
 
 class Swap : Ability() {
     object Args {
-        const val FIRST_TARGET = "firsttarget"
-        const val SECOND_TARGET = "secondtarget"
-        const val FIRST_TARGET_SIDE = "firsttargetside"
-        const val SECOND_TARGET_SIDE = "secondtargetside"
+        const val FIRST_TARGET = "first target"
+        const val SECOND_TARGET = "second target"
+        const val FIRST_TARGET_SIDE = "first target side"
+        const val SECOND_TARGET_SIDE = "second target side"
     }
 
     override fun use() {
