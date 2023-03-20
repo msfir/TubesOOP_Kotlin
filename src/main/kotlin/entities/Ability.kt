@@ -6,12 +6,12 @@ abstract class Ability {
     private var _owner: Player? = null
     private var _manager: GameManager? = null
     private var _additionalArgs: Map<String, Any> = emptyMap()
-    private var _used = false;
-    private var _muted = false;
+    private var _used = false
+    private var _muted = false
 
     protected val owner get() = _owner!!
     protected val manager get() = _manager!!
-    protected val additionalArgs get() = _additionalArgs!!
+    protected val additionalArgs get() = _additionalArgs
 
     var used
         get() = _used

@@ -1,26 +1,18 @@
 package tubes.oop
 
-import tubes.oop.entities.Card
 import tubes.oop.entities.Deck
 import tubes.oop.entities.Player
 import tubes.oop.entities.Table
 
 class GameManager {
-    private val _players = mutableListOf<Player>()
-
-    val players get() = _players.toList()
+    val players = mutableListOf<Player>()
     val currentRoundPlayerTurnQueue = mutableListOf<Int>()
     val nextRoundPlayerTurnQueue = mutableListOf<Int>()
-    var pot: Long = 0
-    var deck = Deck()
-    var table = Table()
-
-    fun registerPlayer(player: Player) {
-
-    }
-
-    fun fillDeck(deck: Deck) {
-
-    }
-
+    val deck = Deck()
+    val table = Table()
+    val stateRegistry = GameStateRegistry()
+    var pot = 0L
+    var currentRound = 0
+    var currentPlayerIndex = 0
+    val currentPlayer get() = players[currentPlayerIndex]
 }

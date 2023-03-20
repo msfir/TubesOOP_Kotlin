@@ -5,7 +5,7 @@ import tubes.oop.entities.Player
 
 class Switch : Ability() {
     object Args {
-        val TARGET = "target"
+        const val TARGET = "target"
     }
 
     override fun use() {

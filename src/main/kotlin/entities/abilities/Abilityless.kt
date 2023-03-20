@@ -5,7 +5,7 @@ import tubes.oop.entities.Player
 
 class Abilityless : Ability() {
     object Args {
-        val TARGET = "target"
+        const val TARGET = "target"
     }
 
     override fun use() {
