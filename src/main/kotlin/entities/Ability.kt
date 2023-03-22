@@ -13,6 +13,8 @@ abstract class Ability {
     protected val manager get() = _manager!!
     protected val additionalArgs get() = _additionalArgs
 
+    abstract val name: String
+
     var used
         get() = _used
         protected set(value) {

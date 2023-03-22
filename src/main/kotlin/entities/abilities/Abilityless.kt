@@ -8,6 +8,9 @@ class Abilityless : Ability() {
         const val TARGET = "target"
     }
 
+    override val name: String
+        get() = "Abilityless"
+
     override fun use() {
         val target = additionalArgs[Args.TARGET] as Player
         target.ability!!.mute()

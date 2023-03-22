@@ -8,15 +8,15 @@ import tubes.oop.states.Action
 
 class Next : Action() {
     override fun updateState(manager: GameManager): GameState {
-        if (manager.currentRoundPlayerTurnQueue.isEmpty()) {
+        return if (manager.currentRoundPlayerTurnQueue.isEmpty()) {
             manager.currentRound++
             println("Giliran dilanjut ke ${manager.currentPlayer.name.ansi(*ANSI_NAME)}")
-            return manager.stateRegistry.getState("round setup")
+            manager.stateRegistry.getState("round setup")
         } else {
             manager.currentPlayerIndex = manager.currentRoundPlayerTurnQueue.first()
             manager.currentRoundPlayerTurnQueue.removeFirst()
             println("Giliran dilanjut ke ${manager.currentPlayer.name.ansi(*ANSI_NAME)}")
-            return manager.stateRegistry.getState("dashboard")
+            manager.stateRegistry.getState("dashboard")
         }
     }
 }

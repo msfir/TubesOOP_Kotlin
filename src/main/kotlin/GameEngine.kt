@@ -2,6 +2,8 @@ package tubes.oop
 
 import tubes.oop.entities.abilities.*
 import tubes.oop.states.*
+import tubes.oop.states.actions.Double
+import tubes.oop.states.actions.Half
 import tubes.oop.states.actions.Next
 
 class GameEngine() {
@@ -15,6 +17,8 @@ class GameEngine() {
         manager.stateRegistry.registerState("dashboard", Dashboard())
         manager.stateRegistry.registerState("player command", PlayerCommand())
         manager.stateRegistry.registerState("next", Next())
+        manager.stateRegistry.registerState("double", Double())
+        manager.stateRegistry.registerState("half", Half())
 
         manager.abilityRegistry.registerAbility(Quadruple())
         manager.abilityRegistry.registerAbility(Quarter())

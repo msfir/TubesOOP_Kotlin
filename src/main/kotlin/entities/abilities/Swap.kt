@@ -11,6 +11,9 @@ class Swap : Ability() {
         const val SECOND_TARGET_SIDE = "second target side"
     }
 
+    override val name: String
+        get() = "Swap"
+
     override fun use() {
         val target1 = additionalArgs[Args.FIRST_TARGET] as Player
         val target2 = additionalArgs[Args.SECOND_TARGET] as Player

@@ -8,6 +8,9 @@ class Switch : Ability() {
         const val TARGET = "target"
     }
 
+    override val name: String
+        get() = "Switch"
+
     override fun use() {
         val target = additionalArgs[Args.TARGET] as Player
         val targetCards = target.cards
