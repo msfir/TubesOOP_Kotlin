@@ -31,7 +31,7 @@ class RoundSetup : GameState {
     private fun distributeAbilities(manager: GameManager) {
         val abilities = manager.abilityRegistry.getAbilities().shuffled()
         for ((player, ability) in manager.players.zip(abilities)) {
-            player.ability = ability
+            player.ability = ability.withManager(manager)
         }
     }
 
