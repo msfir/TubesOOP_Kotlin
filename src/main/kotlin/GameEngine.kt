@@ -2,9 +2,8 @@ package tubes.oop
 
 import tubes.oop.entities.abilities.*
 import tubes.oop.states.*
+import tubes.oop.states.actions.*
 import tubes.oop.states.actions.Double
-import tubes.oop.states.actions.Half
-import tubes.oop.states.actions.Next
 
 class GameEngine() {
     private val manager = GameManager()
@@ -19,6 +18,13 @@ class GameEngine() {
         manager.stateRegistry.registerState("next", Next())
         manager.stateRegistry.registerState("double", Double())
         manager.stateRegistry.registerState("half", Half())
+        manager.stateRegistry.registerState("quarter", QuarterAct())
+        manager.stateRegistry.registerState("quadruple", QuadrupleAct())
+        manager.stateRegistry.registerState("re-roll", ReRollAct())
+        manager.stateRegistry.registerState("reverse", ReverseAct())
+        manager.stateRegistry.registerState("swap", SwapAct())
+        manager.stateRegistry.registerState("switch", SwitchAct())
+        manager.stateRegistry.registerState("abilityless", AbilitylessAct())
 
         manager.abilityRegistry.registerAbility(Quadruple())
         manager.abilityRegistry.registerAbility(Quarter())
