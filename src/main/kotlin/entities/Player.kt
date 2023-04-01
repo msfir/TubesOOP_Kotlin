@@ -1,7 +1,8 @@
 package tubes.oop.entities
 
 class Player(val name: String) {
-    enum class Side { LEFT, RIGHT }
+    lateinit var leftCard: Card
+    lateinit var rightCard: Card
 
     private var _ability: Ability? = null
 
@@ -11,31 +12,15 @@ class Player(val name: String) {
         set(value) {
             _ability = value
         }
+    
+    val cards get() = Pair(leftCard, rightCard)
 
-    private val _cards = mutableListOf<Card>()
-    val cards get() = Pair(_cards[0], _cards[1])
-
+    fun setCards(left: Card, right: Card) {
+        leftCard = left
+        rightCard = right
+    }
     fun setCards(cards: Pair<Card, Card>) {
-        if (_cards.isEmpty()) {
-            _cards.add(cards.first)
-            _cards.add(cards.second)
-        } else {
-            _cards[0] = cards.first
-            _cards[1] = cards.second
-        }
-    }
-
-    fun setCard(card: Card, side: Side) {
-        when (side) {
-            Side.LEFT -> _cards[0] = card
-            Side.RIGHT -> _cards[1] = card
-        }
-    }
-
-    fun getCard(side: Side): Card {
-        return when (side) {
-            Side.LEFT -> _cards[0]
-            Side.RIGHT -> _cards[1]
-        }
+        leftCard = cards.first
+        rightCard = cards.second
     }
 }
