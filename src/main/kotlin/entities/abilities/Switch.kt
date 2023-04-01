@@ -3,13 +3,10 @@ package tubes.oop.entities.abilities
 import tubes.oop.entities.Ability
 import tubes.oop.entities.Player
 
-class Switch : Ability() {
+class Switch : Ability("Switch") {
     object Args {
         const val TARGET = "target"
     }
-
-    override val name: String
-        get() = "Switch"
 
     override fun use() {
         val target = additionalArgs[Args.TARGET] as Player

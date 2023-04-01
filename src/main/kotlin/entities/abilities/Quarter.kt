@@ -2,10 +2,7 @@ package tubes.oop.entities.abilities
 
 import tubes.oop.entities.Ability
 
-class Quarter : Ability() {
-    override val name: String
-        get() = "Quarter"
-
+class Quarter : Ability("Quarter") {
     override fun use() {
         manager.pot /= 4
 

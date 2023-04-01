@@ -2,13 +2,9 @@ package tubes.oop.entities.abilities
 
 import tubes.oop.entities.Ability
 
-class ReRoll : Ability() {
-    override val name: String
-        get() = "Re-roll"
-
+class ReRoll : Ability("Re-Roll") {
     override fun use() {
-        val cards = Pair(manager.deck.takeCard(), manager.deck.takeCard())
-        owner.setCards(cards)
+        owner.setCards(manager.deck.takeCard(), manager.deck.takeCard())
 
         used = true
     }

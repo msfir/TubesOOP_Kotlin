@@ -2,7 +2,7 @@ package tubes.oop.entities
 
 import tubes.oop.GameManager
 
-abstract class Ability {
+abstract class Ability(val name: String) {
     private var _owner: Player? = null
     private var _manager: GameManager? = null
     private var _additionalArgs: Map<String, Any> = emptyMap()
@@ -12,8 +12,6 @@ abstract class Ability {
     protected val owner get() = _owner!!
     protected val manager get() = _manager!!
     protected val additionalArgs get() = _additionalArgs
-
-    abstract val name: String
 
     var used
         get() = _used

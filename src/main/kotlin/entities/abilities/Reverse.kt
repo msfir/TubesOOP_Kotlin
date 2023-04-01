@@ -2,9 +2,7 @@ package tubes.oop.entities.abilities
 
 import tubes.oop.entities.Ability
 
-class Reverse : Ability() {
-    override val name: String
-        get() = "Reverse"
+class Reverse : Ability("Reverse") {
 
     override fun use() {
         manager.currentRoundPlayerTurnQueue.reverse()
