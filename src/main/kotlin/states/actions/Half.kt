@@ -11,7 +11,7 @@ import tubes.oop.states.Action
 class Half : Action() {
     override fun updateState(manager: GameManager): GameState {
         val player = manager.currentPlayer
-        println("${player.name.ansi(*ANSI_NAME)} melakukan ${"HALF".ansi(*ANSI_COMMAND)}!")
+        println("${player.name.ansi(*ANSI_NAME)} melakukan ${"Half".ansi(*ANSI_COMMAND)}!")
         print("Poin hadiah telah berubah dari ${manager.pot.toString().ansi(*ANSI_SPECIAL_TEXT)} menjadi ")
         manager.pot /= 2
         println(manager.pot.toString().ansi(*ANSI_SPECIAL_TEXT))

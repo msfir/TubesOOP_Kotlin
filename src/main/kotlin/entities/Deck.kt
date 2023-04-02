@@ -10,17 +10,9 @@ class Deck {
         _cards.add(card)
     }
 
-    fun takeCard(): Card {
-        val card = _cards.last()
-        _cards.removeLast()
-        return card
-    }
+    fun takeCard(): Card = _cards.removeLast()
 
-    fun clear() {
-        _cards.clear()
-    }
+    fun clear() = _cards.clear()
 
-    fun shuffle() {
-        _cards.shuffle(Random(System.nanoTime()))
-    }
+    fun shuffle() = _cards.shuffle(Random(System.nanoTime()))
 }
