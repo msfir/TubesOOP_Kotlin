@@ -7,6 +7,7 @@ import tubes.oop.entities.cards.GreenCard
 import tubes.oop.entities.cards.RedCard
 import tubes.oop.entities.cards.YellowCard
 import kotlin.Pair
+import kotlin.math.pow
 
 class StraightFlush : Combo("Straight Flush") {
     override fun isThereCombo(playerCards: Pair<Card, Card>, tableCards: List<Card>): Boolean {
@@ -76,5 +77,8 @@ class StraightFlush : Combo("Straight Flush") {
         return newObject
     }
 
-    override fun value(): Double = 275.0681 + cardList.first().number // max value: 288.1581
+    override fun value(): Double =
+        863838.41092594 + cardList.withIndex().sumOf {
+            (13.09).pow(4 - it.index).times(it.value.value())
+        } // max value: 1277321.697480105
 }

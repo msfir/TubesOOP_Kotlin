@@ -3,6 +3,7 @@ package tubes.oop.entities.combos
 import tubes.oop.entities.Card
 import tubes.oop.entities.Combo
 import kotlin.Pair
+import kotlin.math.pow
 
 class FullHouse : Combo("Full House") {
     override fun isThereCombo(playerCards: Pair<Card, Card>, tableCards: List<Card>): Boolean {
@@ -20,7 +21,7 @@ class FullHouse : Combo("Full House") {
         val temp2 = mutableListOf<Card>()
         var i = 0
         while (i < 5) {
-            if (allCards[i].number == allCards[i].number
+            if (allCards[i].number == allCards[i + 1].number
                 && allCards[i + 1].number == allCards[i + 2].number
             ) {
                 temp1.addAll(allCards.drop(i).take(3))
@@ -38,6 +39,7 @@ class FullHouse : Combo("Full House") {
                     return true
                 }
             }
+            i++
         }
         return false
     }
@@ -48,5 +50,8 @@ class FullHouse : Combo("Full House") {
         return newObject
     }
 
-    override fun value(): Double = 248.8881 + cardList.first().value() // max value: 261.9781
+    override fun value(): Double = 
+        829774.38133733 + cardList.take(3).withIndex().sumOf {
+            (13.09).pow(2 - it.index).times(it.value.value())
+        } // max value: 832201.31336633
 }

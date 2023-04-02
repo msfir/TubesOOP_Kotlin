@@ -7,6 +7,7 @@ import tubes.oop.entities.cards.GreenCard
 import tubes.oop.entities.cards.RedCard
 import tubes.oop.entities.cards.YellowCard
 import kotlin.Pair
+import kotlin.math.pow
 
 class Flush : Combo("Flush") {
     override fun isThereCombo(playerCards: Pair<Card, Card>, tableCards: List<Card>): Boolean {
@@ -22,16 +23,16 @@ class Flush : Combo("Flush") {
         val yellowCards = allCards.filterIsInstance<YellowCard>()
         val redCards = allCards.filterIsInstance<RedCard>()
         val groupedCards = listOf(greenCards, blueCards, yellowCards, redCards)
-        groupedCards.forEach {
-            if (it.count() > 4) {
-                cardList.addAll(it.take(5))
+        for (group in groupedCards) {
+            if (group.count() > 4) {
+                cardList.addAll(group.take(5))
                 if (cardList.contains(playerCards.first) || cardList.contains(playerCards.second)) {
                     return true
                 }
-                if (it.count() > 5) {
+                if (group.count() > 5) {
                     with(cardList) {
                         removeFirst()
-                        add(it[5])
+                        add(group[5])
                     }
                     return true
                 }
@@ -47,5 +48,8 @@ class Flush : Combo("Flush") {
         return newObject
     }
 
-    override fun value(): Double = 235.7981 + cardList.first().value() // max value: 248.8881
+    override fun value(): Double =
+        416292.094783165 + cardList.withIndex().sumOf {
+            (13.09).pow(4 - it.index).times(it.value.value())
+        } // max value: 829774.38133733
 }

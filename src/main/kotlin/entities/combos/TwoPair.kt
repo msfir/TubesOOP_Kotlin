@@ -3,6 +3,7 @@ package tubes.oop.entities.combos
 import tubes.oop.entities.Card
 import tubes.oop.entities.Combo
 import kotlin.Pair
+import kotlin.math.pow
 
 class TwoPair : Combo("Two Pair") {
     override fun isThereCombo(playerCards: Pair<Card, Card>, tableCards: List<Card>): Boolean {
@@ -12,9 +13,12 @@ class TwoPair : Combo("Two Pair") {
             for (i in 0..4) {
                 for (j in i+1..4) {
                     if (tableCards[i].number == tableCards[j].number) {
-                        cardList.addAll(playerCards.toList())
-                        cardList.addAll(tableCards.take(2))
-                        cardList.sortByDescending { it.value() }
+                        with(cardList) {
+                            addAll(playerCards.toList())
+                            add(tableCards[i])
+                            add(tableCards[j])
+                            sortByDescending { it.value() }
+                        }
                         return true
                     }
                 }
@@ -24,11 +28,13 @@ class TwoPair : Combo("Two Pair") {
             if (playerCards.first.number == first.number) {
                 for (second in tableCards) {
                     if (playerCards.second.number == second.number) {
-                        cardList.add(playerCards.first)
-                        cardList.add(first)
-                        cardList.add(playerCards.second)
-                        cardList.add(second)
-                        cardList.sortByDescending { it.value() }
+                        with(cardList) {
+                            add(playerCards.first)
+                            add(first)
+                            add(playerCards.second)
+                            add(second)
+                            sortByDescending { it.value() }
+                        }
                         return true
                     }
                 }
@@ -43,5 +49,8 @@ class TwoPair : Combo("Two Pair") {
         return newObject
     }
 
-    override fun value(): Double = 26.18 + cardList[0].value() * 13.09 + cardList[2].value() // max value: 209.6181
+    override fun value(): Double = 
+        197.4981 + cardList.take(2).withIndex().sumOf {
+            (13.09).pow(1 - it.index).times(it.value.value())
+        } // max value: 381.9062
 }

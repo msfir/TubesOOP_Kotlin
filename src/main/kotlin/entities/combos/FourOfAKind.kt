@@ -3,6 +3,7 @@ package tubes.oop.entities.combos
 import tubes.oop.entities.Card
 import tubes.oop.entities.Combo
 import kotlin.Pair
+import kotlin.math.pow
 
 class FourOfAKind : Combo("Four of a Kind"){
     override fun isThereCombo(playerCards: Pair<Card, Card>, tableCards: List<Card>): Boolean {
@@ -43,5 +44,8 @@ class FourOfAKind : Combo("Four of a Kind"){
         return newObject
     }
 
-    override fun value(): Double = 261.9781 + cardList.first().value() // max value: 275,0681
+    override fun value(): Double =
+        832201.31336633 + cardList.withIndex().sumOf {
+            (13.09).pow(3 - it.index).times(it.value.value())
+        } // max value: 863838.41092594
 }

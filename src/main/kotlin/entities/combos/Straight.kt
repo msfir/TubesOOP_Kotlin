@@ -3,6 +3,7 @@ package tubes.oop.entities.combos
 import tubes.oop.entities.Card
 import tubes.oop.entities.Combo
 import kotlin.Pair
+import kotlin.math.pow
 
 class Straight : Combo("Straight") {
     override fun isThereCombo(playerCards: Pair<Card, Card>, tableCards: List<Card>): Boolean {
@@ -52,5 +53,8 @@ class Straight : Combo("Straight") {
         return newObject
     }
 
-    override fun value(): Double = 222.7081 + cardList.first().value() // max value: 235.7981
+    override fun value(): Double =
+        2808.838229 + cardList.withIndex().sumOf {
+            (13.09).pow(4 - it.index).times(it.value.value())
+        } // max value: 416292.094783165
 }
