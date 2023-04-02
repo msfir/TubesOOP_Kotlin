@@ -6,7 +6,7 @@ import tubes.oop.states.*
 import tubes.oop.states.actions.*
 import tubes.oop.states.actions.Double
 
-class GameEngine() {
+class GameEngine {
     private val manager = GameManager()
 
     init {
@@ -27,6 +27,8 @@ class GameEngine() {
             registerState("switch", SwitchAct())
             registerState("abilityless", AbilitylessAct())
             registerState("card calculation", CardCalculation())
+            registerState("conclusion", Conclusion())
+            registerState("end", End())
         }
         with(manager.abilityRegistry) {
             registerAbility(Quadruple())

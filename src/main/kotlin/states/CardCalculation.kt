@@ -43,10 +43,10 @@ class CardCalculation : GameState {
         println("Pemilik combo terkuat adalah ${winner.name.ansi(*ANSI_NAME)}")
         println("Poin hadiah yang dimenangkan adalah sebesar ${manager.pot.toString().ansi(AnsiCode.UNDERLINE)}")
         winner.points += manager.pot
-        if (winner.points < (1L).shl(32)) {
-            return manager.stateRegistry.getState("game setup")
+        return if (winner.points < (1L).shl(32)) {
+            manager.stateRegistry.getState("game setup")
         } else {
-            TODO("conclusion state is not implemented yet")
+            manager.stateRegistry.getState("conclusion")
         }
     }
 

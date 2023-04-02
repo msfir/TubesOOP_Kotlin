@@ -9,6 +9,7 @@ import java.util.*
 
 class PlayerRegistration : GameState {
     override fun updateState(manager: GameManager): GameState {
+        manager.players.clear()
         var i = 1
         val scanner = Scanner(System.`in`)
         outer@ while (i <= 7) {
