@@ -3,7 +3,7 @@ package tubes.oop.entities.abilities
 import tubes.oop.entities.Ability
 import tubes.oop.entities.Player
 
-class Abilityless : Ability("Ability-less") {
+class Abilityless : Ability("Abilityless") {
     object Args {
         const val TARGET = "target"
     }

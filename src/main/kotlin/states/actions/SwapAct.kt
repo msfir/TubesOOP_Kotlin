@@ -7,17 +7,17 @@ import tubes.oop.extensions.ansi
 import tubes.oop.globals.ANSI_NAME
 import tubes.oop.globals.ANSI_SPECIAL_TEXT
 import tubes.oop.globals.inputValidate
+import tubes.oop.globals.validateAbility
 import tubes.oop.states.Action
 
 class SwapAct : Action() {
     override fun updateState(manager: GameManager): GameState {
         val player = manager.currentPlayer
         val ability = player.ability
-        if (ability !is Swap) {
-            println("Kamu tidak punya ability ${"SWAP".ansi(*ANSI_SPECIAL_TEXT)}!")
+        if (!validateAbility(ability, "Swap")) {
             return manager.stateRegistry.getState("player command")
         }
-        println("${player.name.ansi(*ANSI_NAME)} menggunakan ability ${"SWAP".ansi(*ANSI_SPECIAL_TEXT)}!");
+        println("${player.name.ansi(*ANSI_NAME)} menggunakan ability ${"Swap".ansi(*ANSI_SPECIAL_TEXT)}!")
         val players = manager.players.filter { it.name != player.name }.toMutableList()
 
         println("Silahkan pilih pemain yang kartunya ingin anda tukar:")
@@ -45,7 +45,7 @@ class SwapAct : Action() {
         println("\t2. Kanan")
         val target2Side = inputValidate(1, 2)
 
-        ability.withAdditionalArgs(
+        ability!!.withAdditionalArgs(
             mapOf(
                 Swap.Args.FIRST_TARGET to target1,
                 Swap.Args.SECOND_TARGET to target2,
