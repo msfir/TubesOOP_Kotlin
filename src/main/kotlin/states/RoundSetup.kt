@@ -5,13 +5,11 @@ import tubes.oop.GameState
 
 class RoundSetup : GameState {
     override fun updateState(manager: GameManager): GameState {
-        if (manager.currentRound == 1) {
+        if (manager.currentRound == 1 && manager.currentRoundPlayerTurnQueue.isEmpty()) {
             manager.currentPlayerIndex = 0
-            manager.currentRoundPlayerTurnQueue.clear()
             manager.currentRoundPlayerTurnQueue.addAll(listOf(1, 2, 3, 4, 5, 6))
             manager.nextRoundPlayerTurnQueue.clear()
             manager.nextRoundPlayerTurnQueue.addAll(listOf(1, 2, 3, 4, 5, 6, 0))
-            distributeCards(manager)
         } else {
             manager.currentPlayerIndex = manager.nextRoundPlayerTurnQueue.first()
             manager.nextRoundPlayerTurnQueue.removeFirst()
@@ -32,12 +30,6 @@ class RoundSetup : GameState {
         val abilities = manager.abilityRegistry.getAbilities().shuffled()
         for ((player, ability) in manager.players.zip(abilities)) {
             player.ability = ability.withManager(manager)
-        }
-    }
-
-    private fun distributeCards(manager: GameManager) {
-        for (player in manager.players) {
-            player.setCards(Pair(manager.deck.takeCard(), manager.deck.takeCard()))
         }
     }
 
