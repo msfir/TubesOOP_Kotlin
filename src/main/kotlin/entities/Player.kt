@@ -3,6 +3,7 @@ package tubes.oop.entities
 class Player(val name: String) {
     lateinit var leftCard: Card
     lateinit var rightCard: Card
+    lateinit var combo: Combo
 
     private var _ability: Ability? = null
 

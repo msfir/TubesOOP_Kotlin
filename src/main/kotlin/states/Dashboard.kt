@@ -10,6 +10,9 @@ import tubes.oop.globals.ANSI_TITLE
 
 class Dashboard : GameState {
     override fun updateState(manager: GameManager): GameState {
+        if (manager.currentRound == 7) {
+            return manager.stateRegistry.getState("card calculation")
+        }
         val player = manager.currentPlayer
         print("==========[ ".ansi(*ANSI_BORDER))
         print("Dashboard".ansi(*ANSI_TITLE))
@@ -27,16 +30,16 @@ class Dashboard : GameState {
         println("\tKanan: $right")
         try {
             val ability = player.ability!!
-            print("Kamu punya ability ${ability.name.ansi(*ANSI_SPECIAL_TEXT)}")
+            print("• Kamu punya ability ${ability.name.ansi(*ANSI_SPECIAL_TEXT)}")
             if (ability.used) {
                 println(" (sudah digunakan)")
             } else if (ability.muted) {
-                println( "(sudah dimatikan oleh orang lain)")
+                println( " (sudah dimatikan)")
             } else {
                 println()
             }
         } catch (e: NullPointerException) {
-            println("Kamu belum punya ability")
+            println("• Kamu belum punya ability")
         }
         return manager.stateRegistry.getState("player command")
     }

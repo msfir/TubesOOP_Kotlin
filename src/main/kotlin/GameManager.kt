@@ -12,6 +12,7 @@ class GameManager {
     val table = Table()
     val stateRegistry = GameStateRegistry()
     val abilityRegistry = AbilityRegistry()
+    val comboRegistry = ComboRegistry()
     var pot = 0L
     var currentRound = 0
     var currentPlayerIndex = 0
